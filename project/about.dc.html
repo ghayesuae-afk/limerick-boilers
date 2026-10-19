@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fbfaf7;color:#14202b;font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2574a3;text-decoration:none}
+a:hover{color:#1b5a80}
+</style>
+</helmet>
+<div style="padding-bottom:{{ pagePad }};min-height:100vh;">
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(251,250,247,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #ebe8e1;padding-top:{{ safeTop }};">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="home.dc.html" style="display:flex;align-items:center;"><img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:40px;display:block;"></a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:24px;font-size:15px;font-weight:600;">
+      <a href="home.dc.html" style="color:#14202b;">Home</a>
+      <a href="about.dc.html" style="color:#2574a3;">About Us</a>
+      <a href="services.dc.html" style="color:#14202b;">Services</a>
+      <a href="contact.dc.html" style="color:#14202b;">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="book.dc.html" style="background:#f39021;color:#14202b;font-weight:700;font-size:15px;padding:12px 20px;border-radius:999px;white-space:nowrap;" style-hover="background:#e5801a;color:#14202b;">Book now</a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border-radius:50%;border:1.5px solid #ddd8ce;background:#fff;cursor:pointer;padding:0;">
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar1 }};transition:transform .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;opacity:{{ bar2 }};transition:opacity .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar3 }};transition:transform .2s;"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:4px 20px 24px;border-top:1px solid #ebe8e1;">
+      <a href="home.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Home<span style="color:#c9c4b8;">→</span></a>
+      <a href="about.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#2574a3;border-bottom:1px solid #ebe8e1;">About Us<span style="color:#c9c4b8;">→</span></a>
+      <a href="services.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Services<span style="color:#c9c4b8;">→</span></a>
+      <a href="contact.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Contact<span style="color:#c9c4b8;">→</span></a>
+      <a href="tel:+35361785205" style="margin-top:20px;display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #c9c4b8;border-radius:999px;color:#14202b;font-size:16px;font-weight:700;">Call 061 785 205</a>
+    </nav>
+  </sc-if>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:72px 24px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center;">
+  <div style="display:flex;flex-direction:column;gap:22px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">About Limerick Boilers</span>
+    <h1 style="margin:0;font-size:clamp(40px,5.4vw,64px);line-height:1.04;font-weight:800;letter-spacing:-0.03em;text-wrap:balance;">Keeping Limerick homes warm.</h1>
+    <p style="margin:0;font-size:18px;line-height:1.6;color:#3d4852;max-width:540px;text-wrap:pretty;">Limerick Boilers provides professional oil and gas boiler installation, repairs and servicing for homes across Limerick city and county. With over 20 years experience in the heating industry, we focus on delivering reliable, efficient heating systems and honest advice for homeowners.</p>
+    <p style="margin:0;font-size:18px;line-height:1.6;color:#3d4852;max-width:540px;text-wrap:pretty;">From new boiler installations to breakdown repairs and annual servicing, our goal is simple: keep your heating running safely and efficiently all year round.</p>
+  </div>
+  <div style="width:100%;aspect-ratio:4/3.2;"><image-slot id="about-hero" shape="rounded" radius="28" src="uploads/Gemini_Generated_Image_h4ac7uh4ac7uh4ac.jpg" placeholder="Team or van photo"></image-slot></div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:0 24px 24px;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border-top:1px solid #ebe8e1;border-bottom:1px solid #ebe8e1;">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+      <div style="padding:32px 8px;display:flex;flex-direction:column;gap:6px;">
+        <span style="font-size:clamp(40px,4.6vw,56px);font-weight:800;letter-spacing:-0.03em;color:#2574a3;line-height:1;">{{ s.v }}</span>
+        <span style="font-size:16px;font-weight:600;color:#3d4852;">{{ s.k }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:72px 24px 96px;">
+  <div style="display:flex;flex-direction:column;gap:22px;max-width:760px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">Reliable heating solutions</span>
+    <h2 style="margin:0;font-size:clamp(30px,3.6vw,42px);line-height:1.12;font-weight:800;letter-spacing:-0.02em;">Trusted boiler installers in Limerick.</h2>
+    <p style="margin:0;font-size:17px;line-height:1.6;color:#3d4852;text-wrap:pretty;">Our goal is simple: keep homes across Limerick warm, safe and efficient. Whether installing a new boiler, repairing a breakdown or carrying out annual servicing, we deliver dependable heating solutions with a strong focus on safety, efficiency and customer satisfaction.</p>
+    <div style="display:flex;flex-direction:column;border-top:1px solid #ebe8e1;">
+      <sc-for list="{{ creds }}" as="c" hint-placeholder-count="4">
+        <div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #ebe8e1;font-size:15px;">
+          <span style="font-weight:700;">{{ c.k }}</span><span style="color:#4a5560;text-align:right;">{{ c.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid #ebe8e1;border-bottom:1px solid #ebe8e1;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#5e6870;">Certified & approved</span>
+    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+      <img src="https://www.limerickboilers.ie/assets/img/RGI.png" alt="Registered Gas Installer" style="height:44px;">
+      <img src="https://www.limerickboilers.ie/assets/img/OFTEC.png" alt="OFTEC" style="height:44px;">
+      <img src="https://www.limerickboilers.ie/assets/img/seai.png" alt="SEAI" style="height:44px;">
+      <span style="width:1px;height:32px;background:#ebe8e1;"></span>
+      <img src="https://www.limerickboilers.ie/assets/img/Grant.png" alt="Grant" style="height:34px;">
+      <img src="https://www.limerickboilers.ie/assets/img/ideal.png" alt="Ideal" style="height:34px;">
+      <img src="https://www.limerickboilers.ie/assets/img/BoschWorchester.png" alt="Worcester Bosch" style="height:34px;">
+    </div>
+  </div>
+</section>
+
+<section style="background:#f2efe8;">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:640px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">Where we work</span>
+      <h2 style="margin:0;font-size:clamp(30px,3.6vw,42px);line-height:1.12;font-weight:800;letter-spacing:-0.02em;">Boiler installers serving Limerick city & county.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#3d4852;">We regularly install and repair heating systems across Limerick including:</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+      <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+          <h3 style="margin:0;font-size:18px;font-weight:700;">{{ a.region }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:#4a5560;">{{ a.towns }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;">
+  <h2 style="margin:0;font-size:clamp(32px,4.4vw,52px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;max-width:760px;text-wrap:balance;">Need a new boiler, repair or service in Limerick?</h2>
+  <p style="margin:0;font-size:17px;color:#3d4852;max-width:560px;">Our experienced heating specialists are ready to help. The €40 survey fee comes off your new boiler.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a href="book.dc.html" style="background:#2574a3;color:#fff;font-weight:700;font-size:17px;padding:18px 28px;border-radius:999px;" style-hover="background:#1b5a80;color:#fff;">Book a €40 site survey</a>
+    <a href="tel:+35361785205" style="border:1.5px solid #c9c4b8;color:#14202b;font-weight:700;font-size:17px;padding:16.5px 26px;border-radius:999px;" style-hover="border-color:#14202b;color:#14202b;">Call 061 785 205</a>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #ebe8e1;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:32px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:#5e6870;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:36px;width:auto;align-self:flex-start;">
+      <span>© 2026 Limerick Boilers · Serving Limerick city & county</span>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <a href="tel:+35361785205" style="font-weight:700;color:#14202b;">061 785 205</a>
+      <a href="mailto:info@limerickboilers.ie">info@limerickboilers.ie</a>
+      <span>Mon–Sat, 9am–5pm</span>
+      <a href="contact.dc.html">Contact</a>
+      <a href="https://www.limerickboilers.ie/privacy.php">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {};
+  componentDidMount() { const framed = new URLSearchParams(location.search).has('frame'); const u = () => this.setState({ narrow: window.innerWidth < 760, framed }); u(); window.addEventListener('resize', u); }
+  renderVals() {
+    const narrow = !!(this.state && this.state.narrow);
+    const j = a => a.join(' · ');
+    return {
+      pagePad: '0',
+      safeTop: narrow && this.state.framed ? '48px' : '0', 
+      navDisplay: narrow ? 'none' : 'flex', burgerDisplay: narrow ? 'flex' : 'none', menuOpen: narrow && !!this.state.menu,
+      toggleMenu: () => this.setState(p => ({ menu: !p.menu })),
+      bar1: this.state.menu ? 'translateY(7px) rotate(45deg)' : 'none', bar2: this.state.menu ? 0 : 1, bar3: this.state.menu ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      stats: [
+        { v: '20+', k: 'Years industry experience' },
+        { v: '1000+', k: 'Heating jobs completed' },
+        { v: '100%', k: 'Fully insured work' },
+      ],
+      creds: [
+        { k: 'Registered Gas Installer', v: 'RGI' },
+        { k: 'Oil heating', v: 'OFTEC certified' },
+        { k: 'Grants', v: 'SEAI registered' },
+        { k: 'Insurance', v: 'Fully insured' },
+      ],
+      areas: [
+        { region: 'Limerick City', towns: j(['Limerick City Centre','Castletroy','Annacotty','Monaleen','Corbally','Caherdavin','Ennis Road','North Circular Road','South Circular Road','Dooradoyle','Raheen','Mungret','Patrickswell']) },
+        { region: 'West Limerick', towns: j(['Newcastle West','Rathkeale','Croagh','Ardagh','Kilcolman','Askeaton','Foynes','Shanagolden','Glin','Abbeyfeale','Templeglantine','Tournafulla','Mountcollins']) },
+        { region: 'East Limerick', towns: j(['Castleconnell','Lisnagry','Ahane','Murroe','Cappamore','Doon','Kilteely','Pallasgreen','Oola']) },
+        { region: 'South Limerick', towns: j(['Bruff','Kilmallock','Hospital','Knocklong','Ballylanders','Galbally','Elton','Ballingarry']) },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

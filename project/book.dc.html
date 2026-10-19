@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fbfaf7;color:#14202b;font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2574a3;text-decoration:none}
+a:hover{color:#1b5a80}
+input::placeholder,textarea::placeholder{color:#8a939a}
+</style>
+</helmet>
+<div style="padding-bottom:{{ pagePad }};min-height:100vh;display:flex;flex-direction:column;">
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(251,250,247,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #ebe8e1;padding-top:{{ safeTop }};">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="home.dc.html" style="display:flex;align-items:center;"><img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:40px;display:block;"></a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:24px;font-size:15px;font-weight:600;">
+      <a href="home.dc.html" style="color:#14202b;">Home</a>
+      <a href="about.dc.html" style="color:#14202b;">About Us</a>
+      <a href="services.dc.html" style="color:#14202b;">Services</a>
+      <a href="contact.dc.html" style="color:#14202b;">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="book.dc.html" style="background:#f39021;color:#14202b;font-weight:700;font-size:15px;padding:12px 20px;border-radius:999px;white-space:nowrap;" style-hover="background:#e5801a;color:#14202b;">Book now</a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border-radius:50%;border:1.5px solid #ddd8ce;background:#fff;cursor:pointer;padding:0;">
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar1 }};transition:transform .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;opacity:{{ bar2 }};transition:opacity .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar3 }};transition:transform .2s;"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:4px 20px 24px;border-top:1px solid #ebe8e1;">
+      <a href="home.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Home<span style="color:#c9c4b8;">→</span></a>
+      <a href="about.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">About Us<span style="color:#c9c4b8;">→</span></a>
+      <a href="services.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Services<span style="color:#c9c4b8;">→</span></a>
+      <a href="contact.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Contact<span style="color:#c9c4b8;">→</span></a>
+      <a href="tel:+35361785205" style="margin-top:20px;display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #c9c4b8;border-radius:999px;color:#14202b;font-size:16px;font-weight:700;">Call 061 785 205</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main style="flex:1;max-width:820px;width:100%;margin:0 auto;padding:40px 24px 80px;display:flex;flex-direction:column;gap:32px;">
+
+  <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <h1 style="margin:0;font-size:clamp(32px,4.2vw,48px);line-height:1.08;font-weight:800;letter-spacing:-0.025em;">Book online</h1>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;">
+        <sc-for list="{{ stepper }}" as="st" hint-placeholder-count="4">
+          <li style="display:flex;flex-direction:column;gap:8px;">
+            <span style="height:4px;border-radius:2px;background:{{ st.bar }};"></span>
+            <button onClick="{{ st.go }}" style="all:unset;cursor:{{ st.cursor }};font-size:14px;font-weight:700;color:{{ st.color }};">{{ st.n }}. {{ st.label }}</button>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+  <div style="flex:1 1 100%;min-width:0;display:flex;flex-direction:column;gap:24px;">
+
+    <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <h2 style="margin:0;font-size:24px;font-weight:800;">What do you need?</h2>
+        <sc-for list="{{ services }}" as="o" hint-placeholder-count="3">
+          <button onClick="{{ o.pick }}" style="all:unset;cursor:pointer;display:flex;gap:18px;align-items:flex-start;padding:22px 24px;border-radius:18px;border:2px solid {{ o.border }};background:{{ o.bg }};">
+            <span style="flex:none;width:24px;height:24px;margin-top:2px;border-radius:50%;border:2px solid {{ o.dot }};display:flex;align-items:center;justify-content:center;"><span style="width:12px;height:12px;border-radius:50%;background:{{ o.fill }};"></span></span>
+            <span style="flex:1;display:flex;flex-direction:column;gap:6px;">
+              <span style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:19px;font-weight:800;"><span>{{ o.name }}</span><span style="color:#2574a3;">{{ o.price }}</span></span>
+              <span style="font-size:15px;line-height:1.55;color:#4a5560;">{{ o.desc }}</span>
+              <span style="font-size:13px;font-weight:700;color:#5e6870;">{{ o.how }}</span>
+            </span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s1survey }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;">
+          <h2 style="margin:0;font-size:24px;font-weight:800;">Pick a day</h2>
+          <button onClick="{{ pickNext }}" style="font:inherit;cursor:pointer;border:1.5px solid #2574a3;background:#f0f6fa;color:#2574a3;font-size:14px;font-weight:700;padding:10px 16px;border-radius:999px;">Next available: {{ nextLabel }}</button>
+        </div>
+        <div style="background:#fff;border:1px solid #ebe8e1;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <button onClick="{{ prevWeek }}" style="font:inherit;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1.5px solid #ebe8e1;background:#fff;font-size:18px;color:{{ prevColor }};">‹</button>
+            <span style="font-size:16px;font-weight:800;">{{ weekLabel }}</span>
+            <button onClick="{{ nextWeek }}" style="font:inherit;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1.5px solid #ebe8e1;background:#fff;font-size:18px;color:{{ nextColor }};">›</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(56px,1fr));gap:6px;">
+            <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+              <button onClick="{{ d.pick }}" style="font:inherit;cursor:{{ d.cursor }};display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 4px;border-radius:14px;border:1.5px solid {{ d.border }};background:{{ d.bg }};color:{{ d.color }};">
+                <span style="font-size:13px;font-weight:600;">{{ d.dow }}</span>
+                <span style="font-size:22px;font-weight:800;">{{ d.num }}</span>
+                <span style="width:6px;height:6px;border-radius:50%;background:{{ d.dotBg }};"></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ hasDate }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <h2 style="margin:0;font-size:24px;font-weight:800;">Pick a time on {{ dateLong }}</h2>
+            <sc-for list="{{ timeGroups }}" as="g" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#5e6870;">{{ g.label }}</span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;">
+                  <sc-for list="{{ g.slots }}" as="t" hint-placeholder-count="3">
+                    <button onClick="{{ t.pick }}" style="font:inherit;cursor:{{ t.cursor }};padding:16px 8px;border-radius:14px;border:1.5px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:16px;font-weight:700;text-decoration:{{ t.strike }};">{{ t.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+            <span style="font-size:14px;color:#5e6870;">Surveys take about 45 minutes. Someone over 18 needs to be home.</span>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s1service }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <h2 style="margin:0;font-size:24px;font-weight:800;">Pick a week</h2>
+          <span style="font-size:15px;color:#4a5560;">We'll ring you to agree the exact day within that week.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+          <sc-for list="{{ weeks }}" as="w" hint-placeholder-count="4">
+            <button onClick="{{ w.pick }}" style="font:inherit;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:16px;border:2px solid {{ w.border }};background:{{ w.bg }};color:{{ w.color }};">
+              <span style="font-size:13px;font-weight:600;">Week of</span>
+              <span style="font-size:19px;font-weight:800;">{{ w.label }}</span>
+              <span style="font-size:13px;font-weight:600;">{{ w.note }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:15px;font-weight:700;">Mornings or afternoons?</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ prefs }}" as="p" hint-placeholder-count="3">
+              <button onClick="{{ p.pick }}" style="font:inherit;font-size:15px;font-weight:600;cursor:pointer;padding:12px 20px;border-radius:999px;border:1.5px solid {{ p.border }};background:{{ p.bg }};color:{{ p.color }};">{{ p.t }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <h2 style="margin:0;font-size:24px;font-weight:800;">Your details</h2>
+          <span style="font-size:15px;color:#4a5560;">So we know where to go and who to contact.</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ebe8e1;border-radius:20px;padding:24px;display:flex;flex-wrap:wrap;gap:18px;">
+          <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Name<input value="{{ f.name }}" onChange="{{ on.name }}" autocomplete="name" placeholder="Your full name" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+          <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Mobile<input value="{{ f.mobile }}" onChange="{{ on.mobile }}" type="tel" autocomplete="tel" placeholder="08X XXX XXXX" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+          <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Email<input value="{{ f.email }}" onChange="{{ on.email }}" type="email" autocomplete="email" placeholder="For your booking confirmation" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+          <label style="flex:1 1 180px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Eircode<input value="{{ f.eircode }}" onChange="{{ on.eircode }}" autocomplete="postal-code" placeholder="e.g. V94 X2K7" style="font:inherit;font-weight:600;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;text-transform:uppercase;" style-focus="border-color:#2574a3;background:#fff;"><span style="font-size:13px;font-weight:600;color:{{ eirColor }};min-height:18px;">{{ eirMsg }}</span></label>
+          <label style="flex:2 1 300px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Address<input value="{{ f.address }}" onChange="{{ on.address }}" autocomplete="street-address" placeholder="House number and street, town" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+          <div style="flex:1 1 100%;display:flex;flex-direction:column;gap:10px;">
+            <span style="font-size:14px;font-weight:700;">Current boiler</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ fuels }}" as="p" hint-placeholder-count="3">
+                <button onClick="{{ p.pick }}" style="font:inherit;font-size:15px;font-weight:600;cursor:pointer;padding:11px 18px;border-radius:999px;border:1.5px solid {{ p.border }};background:{{ p.bg }};color:{{ p.color }};">{{ p.t }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Anything we should know? <span style="font-weight:500;color:#5e6870;margin-top:-6px;">Optional</span><textarea value="{{ f.notes }}" onChange="{{ on.notes }}" rows="3" placeholder="Access, parking, best time to ring…" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;resize:vertical;" style-focus="border-color:#2574a3;background:#fff;"></textarea></label>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <h2 style="margin:0;font-size:24px;font-weight:800;">Confirm and pay {{ price }}</h2>
+          <span style="font-size:15px;color:#4a5560;">You stay on this page. Your card is processed securely by Stripe.</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ebe8e1;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:18px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+            <button onClick="{{ pay }}" style="font:inherit;cursor:pointer;border:0;background:#000;color:#fff;font-size:17px;font-weight:700;padding:16px;border-radius:12px;"> Pay</button>
+            <button onClick="{{ pay }}" style="font:inherit;cursor:pointer;border:1.5px solid #14202b;background:#fff;color:#14202b;font-size:17px;font-weight:700;padding:14.5px;border-radius:12px;">G Pay</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:#5e6870;"><span style="flex:1;height:1px;background:#ebe8e1;"></span>or pay by card<span style="flex:1;height:1px;background:#ebe8e1;"></span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;">
+            <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Card number<input inputmode="numeric" autocomplete="cc-number" placeholder="1234 1234 1234 1234" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;letter-spacing:0.04em;" style-focus="border-color:#2574a3;background:#fff;"></label>
+            <label style="flex:1 1 140px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">Expiry<input autocomplete="cc-exp" placeholder="MM / YY" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+            <label style="flex:1 1 140px;display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;">CVC<input inputmode="numeric" autocomplete="cc-csc" placeholder="123" style="font:inherit;font-weight:500;font-size:16px;padding:14px 16px;border:1.5px solid #ddd8ce;border-radius:12px;background:#fbfaf7;outline:none;" style-focus="border-color:#2574a3;background:#fff;"></label>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#3d4852;">
+          <sc-for list="{{ assurances }}" as="a" hint-placeholder-count="3">
+            <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:#2574a3;font-weight:800;">✓</span><span>{{ a }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff;border:1px solid #ebe8e1;border-radius:24px;padding:40px 32px;display:flex;flex-direction:column;gap:24px;">
+        <span style="width:56px;height:56px;border-radius:50%;background:#2574a3;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;">✓</span>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <h1 style="margin:0;font-size:clamp(30px,4vw,42px);line-height:1.1;font-weight:800;letter-spacing:-0.02em;">You're booked in, {{ firstName }}.</h1>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:#3d4852;">{{ doneLine }} A confirmation is on its way to {{ emailShown }}.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <button style="font:inherit;cursor:pointer;border:0;background:#2574a3;color:#fff;font-weight:700;font-size:16px;padding:16px 24px;border-radius:999px;">Add to calendar</button>
+          <a href="home.dc.html" style="border:1.5px solid #c9c4b8;color:#14202b;font-weight:700;font-size:16px;padding:14.5px 22px;border-radius:999px;">Back to home</a>
+        </div>
+        <div style="display:flex;flex-direction:column;border-top:1px solid #ebe8e1;">
+          <span style="padding:18px 0 6px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">What happens next</span>
+          <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="3">
+            <div style="display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #ebe8e1;font-size:15px;line-height:1.5;"><span style="font-weight:800;color:#2574a3;">{{ n.i }}</span><span>{{ n.t }}</span></div>
+          </sc-for>
+        </div>
+        <span style="font-size:14px;color:#5e6870;">Booking ref LB-24107 · Need to change it? Ring <a href="tel:+35361785205" style="font-weight:700;">061 785 205</a>.</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <div style="position:sticky;bottom:{{ barBottom }};z-index:5;background:rgba(251,250,247,0.96);backdrop-filter:blur(8px);border-top:1px solid #ebe8e1;padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ back }}" style="font:inherit;cursor:pointer;border:0;background:transparent;color:#14202b;font-weight:700;font-size:16px;padding:14px 4px;">← Back</button>
+        </sc-if>
+        <span style="flex:1 1 160px;font-size:14px;color:#5e6870;display:{{ hintDisplay }};">{{ hint }}</span>
+        <button onClick="{{ next }}" style="font:inherit;cursor:{{ nextCursor }};border:0;background:{{ nextBg }};color:{{ nextColor }};font-weight:800;font-size:17px;padding:18px 32px;border-radius:999px;flex:1 1 180px;">{{ nextLabel2 }}</button>
+      </div>
+    </sc-if>
+  </div>
+
+  </div>
+</main>
+
+<footer style="border-top:1px solid #ebe8e1;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:32px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:#5e6870;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:36px;width:auto;align-self:flex-start;">
+      <span>© 2026 Limerick Boilers · Serving Limerick city & county</span>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <a href="tel:+35361785205" style="font-weight:700;color:#14202b;">061 785 205</a>
+      <a href="mailto:info@limerickboilers.ie">info@limerickboilers.ie</a>
+      <span>Mon–Sat, 9am–5pm</span>
+      <a href="contact.dc.html">Contact</a>
+      <a href="https://www.limerickboilers.ie/privacy.php">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SVCS = [
+  { id: 'survey', name: 'New boiler site survey', price: '€40', desc: 'One of our team visits, checks your system and gives you a fixed price. The €40 comes off your new boiler if you go ahead.', how: 'You pick the exact day and time' },
+  { id: 'oil', name: 'Oil boiler service', price: '€160', desc: 'Full annual service and safety check, incl. VAT.', how: 'You pick a week, we ring to agree the day' },
+  { id: 'gas', name: 'Gas boiler service', price: '€220', desc: 'Full annual service by a Registered Gas Installer, incl. VAT.', how: 'You pick a week, we ring to agree the day' },
+];
+const DOW = ['Mon','Tue','Wed','Thu','Fri','Sat'];
+const DOWL = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const BASE = new Date(2026, 9, 19);
+const TIMES = [['9am',0],['10am',0],['12pm',0],['2pm',1],['4pm',1]];
+const dayAt = (w, i) => { const d = new Date(BASE); d.setDate(d.getDate() + w * 7 + i); return d; };
+const avail = (w, i) => !(w === 0 && i === 0) && (i >= 1 && i <= 3 || (i === 4 && w !== 1));
+const taken = (d, t) => ((d.getDate() * 3 + t * 5) % 7) < 2;
+const COVER = ['V94', 'V35', 'V42'];
+
+class Component extends DCLogic {
+  componentDidMount() { const framed = new URLSearchParams(location.search).has('frame'); const u = () => this.setState({ narrow: window.innerWidth < 760, framed }); u(); window.addEventListener('resize', u); }
+  state = { narrow: false, step: 0, svc: 0, week: 0, date: null, time: null, sweek: null, pref: 'Any time', fuel: null, paying: false,
+    f: { name: '', mobile: '', email: '', eircode: '', address: '', notes: '' } };
+
+  chip(on) { return { border: on ? '#2574a3' : '#ddd8ce', bg: on ? '#2574a3' : '#fff', color: on ? '#fff' : '#14202b' }; }
+
+  renderVals() {
+    const narrow = !!(this.state && this.state.narrow);
+    const st = this.state, s = SVCS[st.svc], isSurvey = s.id === 'survey', f = st.f;
+    const set = p => this.setState(p);
+    const fmtShort = d => `${DOW[(d.getDay() + 6) % 7]} ${d.getDate()} ${MON[d.getMonth()]}`;
+    const fmtLong = d => `${DOWL[(d.getDay() + 6) % 7]} ${d.getDate()} ${MON[d.getMonth()]}`;
+    const selDate = st.date ? dayAt(st.date[0], st.date[1]) : null;
+
+    let next = null;
+    outer: for (let w = 0; w < 3; w++) for (let i = 0; i < 6; i++) if (avail(w, i)) {
+      const d = dayAt(w, i); const t = TIMES.findIndex((_, k) => !taken(d, k)); if (t >= 0) { next = { w, i, t, d }; break outer; } }
+
+    const days = [0,1,2,3,4,5].map(i => {
+      const d = dayAt(st.week, i), ok = avail(st.week, i), on = st.date && st.date[0] === st.week && st.date[1] === i;
+      return { dow: DOW[i], num: d.getDate(), dotBg: on ? '#fff' : ok ? '#2574a3' : 'transparent',
+        cursor: ok ? 'pointer' : 'not-allowed',
+        border: on ? '#2574a3' : ok ? '#ddd8ce' : '#f0ede6', bg: on ? '#2574a3' : ok ? '#fff' : '#f6f4ef', color: on ? '#fff' : ok ? '#14202b' : '#b3b8bc',
+        pick: () => ok && set({ date: [st.week, i], time: null }) };
+    });
+    const timeGroups = selDate ? [['Morning', 0], ['Afternoon', 1]].map(([label, g]) => ({ label,
+      slots: TIMES.map((t, k) => [t, k]).filter(([t]) => t[1] === g).map(([t, k]) => {
+        const x = taken(selDate, k), on = st.time === k;
+        return { label: t[0], cursor: x ? 'not-allowed' : 'pointer', strike: x ? 'line-through' : 'none',
+          border: on ? '#2574a3' : x ? '#f0ede6' : '#ddd8ce', bg: on ? '#2574a3' : x ? '#f6f4ef' : '#fff', color: on ? '#fff' : x ? '#b3b8bc' : '#14202b',
+          pick: () => !x && set({ time: k }) };
+      }) })) : [];
+
+    const weeks = [1,2,3,4].map(w => { const d = dayAt(w, 0), on = st.sweek === w;
+      return { label: `${d.getDate()} ${MON[d.getMonth()]}`, note: w === 1 ? 'Few days left' : 'Good availability',
+        border: on ? '#2574a3' : '#ebe8e1', bg: on ? '#f0f6fa' : '#fff', color: '#14202b', pick: () => set({ sweek: w }) }; });
+
+    const eir = f.eircode.replace(/\s/g, '').toUpperCase();
+    const eirOk = eir.length >= 3 && COVER.includes(eir.slice(0, 3));
+    const eirMsg = eir.length < 3 ? '' : eirOk ? '✓ We cover this area' : "Outside our usual area. Ring us and we'll check.";
+
+    const valid = [true,
+      isSurvey ? (st.date && st.time !== null) : st.sweek !== null,
+      f.name.trim() && f.mobile.trim().length >= 7 && eir.length >= 3 && f.address.trim(),
+      true][st.step];
+
+    const when = isSurvey
+      ? (selDate && st.time !== null ? `${fmtShort(selDate)}, ${TIMES[st.time][0]}` : selDate ? fmtShort(selDate) : 'Not picked')
+      : (st.sweek ? `Week of ${dayAt(st.sweek, 0).getDate()} ${MON[dayAt(st.sweek, 0).getMonth()]}` : 'Not picked');
+
+    const labels = ['Service', isSurvey ? 'Date & time' : 'Week', 'Your details', 'Pay'];
+    const hints = [
+      isSurvey ? 'Takes about 2 minutes.' : 'Takes about 2 minutes.',
+      valid ? `${when} selected.` : (isSurvey ? 'Choose a day, then a time.' : 'Choose a week.'),
+      valid ? 'Nothing is charged yet.' : 'Name, mobile, Eircode and address needed.',
+      `Pay ${s.price} to confirm.`];
+    const nextLabels = ['Continue', 'Continue', 'Review & pay', st.paying ? 'Processing…' : `Pay ${s.price}`];
+
+    const on = {}; Object.keys(f).forEach(k => on[k] = e => { const v = e.target.value; this.setState(p => ({ f: { ...p.f, [k]: v } })); });
+
+    return {
+      barBottom: narrow && this.state.framed ? '28px' : '0',
+      pagePad: '0',
+      safeTop: narrow && this.state.framed ? '48px' : '0', 
+      navDisplay: narrow ? 'none' : 'flex', burgerDisplay: narrow ? 'flex' : 'none', menuOpen: narrow && !!this.state.menu,
+      toggleMenu: () => this.setState(p => ({ menu: !p.menu })),
+      bar1: this.state.menu ? 'translateY(7px) rotate(45deg)' : 'none', bar2: this.state.menu ? 0 : 1, bar3: this.state.menu ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      s0: st.step === 0, s1survey: st.step === 1 && isSurvey, s1service: st.step === 1 && !isSurvey,
+      s2: st.step === 2, s3: st.step === 3, s4: st.step === 4, notDone: st.step < 4, canBack: st.step > 0 && st.step < 4,
+      isSurvey, price: s.price,
+      stepper: labels.map((label, i) => ({ n: i + 1, label,
+        bar: i <= st.step ? '#2574a3' : '#e3dfd6', color: i === st.step ? '#14202b' : i < st.step ? '#2574a3' : '#9aa1a7',
+        cursor: i < st.step ? 'pointer' : 'default', go: () => i < st.step && set({ step: i }) })),
+      services: SVCS.map((o, i) => ({ ...o, pick: () => set({ svc: i }),
+        border: i === st.svc ? '#2574a3' : '#ebe8e1', bg: i === st.svc ? '#f0f6fa' : '#fff',
+        dot: i === st.svc ? '#2574a3' : '#c9c4b8', fill: i === st.svc ? '#2574a3' : 'transparent' })),
+      weekLabel: `${dayAt(st.week, 0).getDate()} – ${dayAt(st.week, 5).getDate()} ${MON[dayAt(st.week, 5).getMonth()]}`,
+      prevWeek: () => st.week > 0 && set({ week: st.week - 1 }), nextWeek: () => st.week < 2 && set({ week: st.week + 1 }),
+      prevColor: st.week > 0 ? '#14202b' : '#c9c4b8', nextColor: st.week < 2 ? '#14202b' : '#c9c4b8',
+      days, hasDate: !!selDate, dateLong: selDate ? fmtLong(selDate) : '', timeGroups,
+      nextLabel: next ? `${fmtShort(next.d)}, ${TIMES[next.t][0]}` : '',
+      pickNext: () => next && set({ week: next.w, date: [next.w, next.i], time: next.t }),
+      weeks, prefs: ['Mornings', 'Afternoons', 'Any time'].map(t => ({ t, ...this.chip(st.pref === t), pick: () => set({ pref: t }) })),
+      fuels: ['Oil', 'Gas', 'Not sure'].map(t => ({ t, ...this.chip(st.fuel === t), pick: () => set({ fuel: t }) })),
+      f, on, eirMsg, eirColor: eirOk ? '#1f7a4d' : '#b8650f',
+      summary: [
+        { k: 'Service', v: s.name, c: '#fff' },
+        { k: isSurvey ? 'When' : 'Week', v: when, c: when === 'Not picked' ? '#7d8a95' : '#fff' },
+        ...(st.step >= 2 && !isSurvey ? [{ k: 'Preference', v: st.pref, c: '#fff' }] : []),
+        ...(st.step >= 3 ? [{ k: 'Where', v: f.eircode.toUpperCase() || '—', c: '#fff' }] : []),
+      ],
+      totalLabel: st.step >= 3 ? 'To pay now' : 'Price incl. VAT',
+      hint: hints[st.step] || '', hintDisplay: this.state.narrow ? 'none' : 'block', nextLabel2: nextLabels[st.step] || '',
+      nextBg: valid ? '#f39021' : '#e3dfd6', nextColor: valid ? '#14202b' : '#8a939a', nextCursor: valid ? 'pointer' : 'not-allowed',
+      back: () => set({ step: st.step - 1 }),
+      next: () => {
+        if (!valid) return;
+        if (st.step === 3) { set({ paying: true }); setTimeout(() => set({ paying: false, step: 4 }), 1200); return; }
+        set({ step: st.step + 1 });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      pay: () => { set({ paying: true }); setTimeout(() => set({ paying: false, step: 4 }), 1200); },
+      assurances: ['Free cancellation up to 48 hours before', 'Receipt and booking details sent by email and text', isSurvey ? 'The €40 is deducted from your installation if you go ahead' : 'Carried out by a fully insured, certified engineer'],
+      firstName: f.name.trim().split(' ')[0] || 'thanks',
+      emailShown: f.email || 'your email',
+      doneLine: isSurvey ? `We'll see you on ${when}.` : `We'll ring you on ${f.mobile || 'your mobile'} to agree a day in the ${when.toLowerCase()}.`,
+      nextSteps: isSurvey ? [
+        { i: '1', t: 'We text you the day before to confirm.' },
+        { i: '2', t: 'We survey your system, about 45 minutes.' },
+        { i: '3', t: 'You get a fixed written quote, with the €40 deducted.' },
+      ] : [
+        { i: '1', t: 'We ring within one working day to agree the date.' },
+        { i: '2', t: 'Your engineer services the boiler and runs safety checks.' },
+        { i: '3', t: 'You receive your service certificate by email.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#fbfaf7;color:#14202b;font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#2574a3;text-decoration:none}
+a:hover{color:#1b5a80}
+</style>
+</helmet>
+<div style="padding-bottom:{{ pagePad }};min-height:100vh;">
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(251,250,247,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #ebe8e1;padding-top:{{ safeTop }};">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="home.dc.html" style="display:flex;align-items:center;"><img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:40px;display:block;"></a>
+    <nav style="display:{{ navDisplay }};align-items:center;gap:24px;font-size:15px;font-weight:600;">
+      <a href="home.dc.html" style="color:#2574a3;">Home</a>
+      <a href="about.dc.html" style="color:#14202b;">About Us</a>
+      <a href="services.dc.html" style="color:#14202b;">Services</a>
+      <a href="contact.dc.html" style="color:#14202b;">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="book.dc.html" style="background:#f39021;color:#14202b;font-weight:700;font-size:15px;padding:12px 20px;border-radius:999px;white-space:nowrap;" style-hover="background:#e5801a;color:#14202b;">Book now</a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border-radius:50%;border:1.5px solid #ddd8ce;background:#fff;cursor:pointer;padding:0;">
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar1 }};transition:transform .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;opacity:{{ bar2 }};transition:opacity .2s;"></span>
+        <span style="width:18px;height:2px;background:#14202b;border-radius:1px;transform:{{ bar3 }};transition:transform .2s;"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:4px 20px 24px;border-top:1px solid #ebe8e1;">
+      <a href="home.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#2574a3;border-bottom:1px solid #ebe8e1;">Home<span style="color:#c9c4b8;">→</span></a>
+      <a href="about.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">About Us<span style="color:#c9c4b8;">→</span></a>
+      <a href="services.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Services<span style="color:#c9c4b8;">→</span></a>
+      <a href="contact.dc.html" style="display:flex;align-items:center;justify-content:space-between;min-height:56px;font-size:19px;font-weight:700;color:#14202b;border-bottom:1px solid #ebe8e1;">Contact<span style="color:#c9c4b8;">→</span></a>
+      <a href="tel:+35361785205" style="margin-top:20px;display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid #c9c4b8;border-radius:999px;color:#14202b;font-size:16px;font-weight:700;">Call 061 785 205</a>
+    </nav>
+  </sc-if>
+</header>
+
+<section id="top" style="max-width:1200px;margin:0 auto;padding:72px 24px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center;">
+  <div style="display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#4a5560;">
+      <span style="color:#f39021;letter-spacing:2px;">★★★★★</span>
+      <span>Rated 5/5 on Google · 20+ years in Limerick</span>
+    </div>
+    <h1 style="margin:0;font-size:clamp(40px,5.6vw,68px);line-height:1.02;font-weight:800;letter-spacing:-0.03em;text-wrap:balance;">New boiler installation, made simple.</h1>
+    <p style="margin:0;font-size:20px;line-height:1.5;color:#3d4852;max-width:520px;text-wrap:pretty;">Fixed-price oil and gas boiler replacement from <strong style="color:#14202b;">€2,500</strong>, installed in as little as one day. Fully insured, RGI and OFTEC certified.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="book.dc.html" style="background:#2574a3;color:#fff;font-weight:700;font-size:17px;padding:18px 28px;border-radius:999px;" style-hover="background:#1b5a80;color:#fff;">Book a €40 site survey</a>
+      <a href="tel:+35361785205" style="border:1.5px solid #c9c4b8;color:#14202b;font-weight:700;font-size:17px;padding:16.5px 26px;border-radius:999px;" style-hover="border-color:#14202b;color:#14202b;">Call 061 785 205</a>
+    </div>
+    <p style="margin:0;font-size:14px;color:#5e6870;">The €40 survey fee comes off your new boiler if you go ahead.</p>
+  </div>
+  <div style="position:relative;">
+    <div style="width:100%;aspect-ratio:4/3.4;"><image-slot id="hero-photo" shape="rounded" radius="28" src="uploads/Gemini_Generated_Image_h4ac7uh4ac7uh4ac.jpg" placeholder="Van photo"></image-slot></div>
+    <div style="position:absolute;left:16px;bottom:16px;background:#fff;border-radius:18px;padding:16px 20px;box-shadow:0 12px 40px rgba(20,32,43,0.14);display:flex;flex-direction:column;gap:2px;max-width:260px;">
+      <span style="font-size:13px;font-weight:600;color:#5e6870;">Typical gas install</span>
+      <span style="font-size:22px;font-weight:800;">€2,500 – €3,500</span>
+      <span style="font-size:13px;color:#5e6870;">Oil from €3,200 – €5,500</span>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid #ebe8e1;border-bottom:1px solid #ebe8e1;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#5e6870;">Certified & approved</span>
+    <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+      <img src="https://www.limerickboilers.ie/assets/img/RGI.png" alt="Registered Gas Installer" style="height:44px;">
+      <img src="https://www.limerickboilers.ie/assets/img/OFTEC.png" alt="OFTEC" style="height:44px;">
+      <img src="https://www.limerickboilers.ie/assets/img/seai.png" alt="SEAI" style="height:44px;">
+      <span style="width:1px;height:32px;background:#ebe8e1;"></span>
+      <img src="https://www.limerickboilers.ie/assets/img/Grant.png" alt="Grant" style="height:34px;">
+      <img src="https://www.limerickboilers.ie/assets/img/ideal.png" alt="Ideal" style="height:34px;">
+      <img src="https://www.limerickboilers.ie/assets/img/BoschWorchester.png" alt="Worcester Bosch" style="height:34px;">
+    </div>
+  </div>
+</section>
+
+<section id="how" style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:48px;">
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:640px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">How it works</span>
+    <h2 style="margin:0;font-size:clamp(32px,4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.02em;">From booking to a warm home in four steps.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+      <div style="background:#fff;border:1px solid #ebe8e1;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;">
+        <span style="width:40px;height:40px;border-radius:50%;background:#1f5f87;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;">{{ s.n }}</span>
+        <h3 style="margin:0;font-size:20px;font-weight:700;">{{ s.title }}</h3>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:#4a5560;">{{ s.body }}</p>
+        <span style="margin-top:auto;font-size:13px;font-weight:700;color:#2574a3;">{{ s.tag }}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="book" style="background:#1f5f87;color:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#f39021;">Book online</span>
+      <h2 style="margin:0;font-size:clamp(32px,4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.02em;">Pick what you need. Pay securely. Done.</h2>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#d6e6f1;max-width:460px;">All prices include VAT. Prefer to talk it through? Ring us Monday to Saturday, 9am to 5pm.</p>
+      <a href="tel:+35361785205" style="font-size:22px;font-weight:800;color:#fff;" style-hover="color:#f39021;">061 785 205</a>
+    </div>
+    <div style="background:#fff;color:#14202b;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:13px;font-weight:700;color:#5e6870;">Step 1 of 4 · Choose a service</span>
+      <sc-for list="{{ services }}" as="o" hint-placeholder-count="3">
+        <button onClick="{{ o.pick }}" style="all:unset;cursor:pointer;display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:16px;border:2px solid {{ o.border }};background:{{ o.bg }};">
+          <span style="flex:none;width:22px;height:22px;margin-top:2px;border-radius:50%;border:2px solid {{ o.dot }};display:flex;align-items:center;justify-content:center;"><span style="width:10px;height:10px;border-radius:50%;background:{{ o.fill }};"></span></span>
+          <span style="flex:1;display:flex;flex-direction:column;gap:4px;">
+            <span style="display:flex;justify-content:space-between;gap:12px;font-size:17px;font-weight:700;"><span>{{ o.name }}</span><span>{{ o.price }}</span></span>
+            <span style="font-size:14px;line-height:1.5;color:#4a5560;">{{ o.desc }}</span>
+          </span>
+        </button>
+      </sc-for>
+      <a href="book.dc.html" style="margin-top:8px;text-align:center;background:#f39021;color:#14202b;font-weight:800;font-size:17px;padding:18px;border-radius:999px;" style-hover="background:#e5801a;color:#14202b;">{{ ctaLabel }}</a>
+      <span style="text-align:center;font-size:13px;color:#5e6870;">{{ ctaNote }}</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="max-width:1200px;margin:0 auto;padding:96px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px 72px;align-items:center;">
+  <div style="display:flex;flex-direction:column;gap:22px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">Your installer</span>
+    <h2 style="margin:0;font-size:clamp(32px,4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">David Hayes and team. 20+ years fitting boilers in Limerick.</h2>
+    <p style="margin:0;font-size:17px;line-height:1.6;color:#3d4852;text-wrap:pretty;">We specialise in oil and gas boiler installation, replacement and servicing for homes across Limerick city and county. Honest advice, a fixed price, and a tidy job.</p>
+    <a href="about.dc.html" style="align-self:flex-start;font-size:16px;font-weight:700;color:#2574a3;">More about us →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;">
+    <sc-for list="{{ creds }}" as="c" hint-placeholder-count="4">
+      <div style="background:#fff;border:1px solid #ebe8e1;border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;gap:14px;min-height:150px;">
+        <img src="{{ c.img }}" alt="{{ c.v }}" style="height:36px;width:auto;align-self:flex-start;object-fit:contain;">
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:3px;">
+          <span style="font-size:17px;font-weight:800;">{{ c.v }}</span>
+          <span style="font-size:14px;color:#4a5560;line-height:1.4;">{{ c.k }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="reviews" style="background:#f2efe8;">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2574a3;">Reviews</span>
+        <h2 style="margin:0;font-size:clamp(32px,4vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.02em;">What Limerick homeowners say.</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-size:40px;font-weight:800;">5.0</span>
+        <span style="display:flex;flex-direction:column;font-size:14px;color:#4a5560;"><span style="color:#f39021;letter-spacing:2px;font-size:16px;">★★★★★</span>on Google Reviews</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+        <figure style="margin:0;background:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:20px;">
+          <span style="color:#f39021;letter-spacing:2px;">★★★★★</span>
+          <blockquote style="margin:0;font-size:16px;line-height:1.6;color:#2a3540;text-wrap:pretty;">“{{ r.q }}”</blockquote>
+          <figcaption style="margin-top:auto;font-size:14px;"><strong>{{ r.n }}</strong><span style="color:#5e6870;"> · Limerick</span></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;">
+  <h2 style="margin:0;font-size:clamp(32px,4.4vw,52px);line-height:1.08;font-weight:800;letter-spacing:-0.02em;max-width:760px;text-wrap:balance;">Ready for a new boiler? Start with a €40 survey.</h2>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a href="book.dc.html" style="background:#2574a3;color:#fff;font-weight:700;font-size:17px;padding:18px 28px;border-radius:999px;" style-hover="background:#1b5a80;color:#fff;">Book a site survey</a>
+    <a href="tel:+35361785205" style="border:1.5px solid #c9c4b8;color:#14202b;font-weight:700;font-size:17px;padding:16.5px 26px;border-radius:999px;" style-hover="border-color:#14202b;color:#14202b;">Call 061 785 205</a>
+  </div>
+</section>
+
+<footer style="border-top:1px solid #ebe8e1;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:32px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:#5e6870;">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <img src="https://www.limerickboilers.ie/assets/img/plumbero-logo.png" alt="Limerick Boilers" style="height:36px;width:auto;align-self:flex-start;">
+      <span>© 2026 Limerick Boilers · Serving Limerick city & county</span>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;">
+      <a href="tel:+35361785205" style="font-weight:700;color:#14202b;">061 785 205</a>
+      <a href="mailto:info@limerickboilers.ie">info@limerickboilers.ie</a>
+      <span>Mon–Sat, 9am–5pm</span>
+      <a href="contact.dc.html">Contact</a>
+      <a href="https://www.limerickboilers.ie/privacy.php">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { const framed = new URLSearchParams(location.search).has('frame'); const u = () => this.setState({ narrow: window.innerWidth < 760, framed }); u(); window.addEventListener('resize', u); }
+  state = { svc: 0 };
+  renderVals() {
+    const narrow = !!(this.state && this.state.narrow);
+    const list = [
+      { name: 'New boiler site survey', price: '€40', desc: 'We visit, check your system and give you a fixed price. The €40 comes off your new boiler.', cta: 'Choose a date & time', note: 'Instant confirmation by email' },
+      { name: 'Oil boiler service', price: '€160', desc: 'Full annual service and safety check.', cta: 'Choose a week', note: 'We ring you to agree the day' },
+      { name: 'Gas boiler service', price: '€220', desc: 'Full annual service by a Registered Gas Installer.', cta: 'Choose a week', note: 'We ring you to agree the day' },
+    ];
+    const s = this.state.svc;
+    return {
+      pagePad: '0',
+      safeTop: narrow && this.state.framed ? '48px' : '0', 
+      navDisplay: narrow ? 'none' : 'flex', burgerDisplay: narrow ? 'flex' : 'none', menuOpen: narrow && !!this.state.menu,
+      toggleMenu: () => this.setState(p => ({ menu: !p.menu })),
+      bar1: this.state.menu ? 'translateY(7px) rotate(45deg)' : 'none', bar2: this.state.menu ? 0 : 1, bar3: this.state.menu ? 'translateY(-7px) rotate(-45deg)' : 'none',
+      services: list.map((o, i) => ({
+        ...o,
+        pick: () => this.setState({ svc: i }),
+        border: i === s ? '#2574a3' : '#ebe8e1',
+        bg: i === s ? '#f0f6fa' : '#fff',
+        dot: i === s ? '#2574a3' : '#c9c4b8',
+        fill: i === s ? '#2574a3' : 'transparent',
+      })),
+      ctaLabel: `${list[s].cta} · ${list[s].price}`,
+      ctaNote: list[s].note,
+      steps: [
+        { n: 1, title: 'Book online', body: 'Pick a time that suits and pay the €40 survey fee by card.', tag: '2 minutes' },
+        { n: 2, title: 'Site survey', body: 'We check your current system and recommend the right boiler for your home.', tag: 'Fixed quote, no surprises' },
+        { n: 3, title: 'Installation', body: 'We remove the old boiler and fit the new one, usually in a single day.', tag: '€40 deducted' },
+        { n: 4, title: 'Warm home', body: 'Efficient heating, manufacturer warranty and aftercare from us.', tag: 'Annual servicing available' },
+      ],
+      creds: [
+        { v: 'RGI registered', k: 'Registered Gas Installer for all gas work', img: 'https://www.limerickboilers.ie/assets/img/RGI.png' },
+        { v: 'OFTEC certified', k: 'Qualified for oil heating installs and servicing', img: 'https://www.limerickboilers.ie/assets/img/OFTEC.png' },
+        { v: 'SEAI registered', k: 'Eligible for heating upgrade grants', img: 'https://www.limerickboilers.ie/assets/img/seai.png' },
+        { v: 'Fully insured', k: 'Public liability cover on every job', img: 'https://www.limerickboilers.ie/assets/img/plumbero-logo.png' },
+      ],
+      reviews: [
+        { n: 'Brian Harte', q: "Top class service from Dave and his team. Nothing is a problem for him and his crew, couldn't recommend them enough. Dave discussed various options with us to suit our budget. His plumber George treated our home as if it was his own." },
+        { n: 'Andrew Lowe', q: "Top quality service from very professional service providers. This business have provided us with boiler and plumbing services for many years and we just wouldn't use anyone else." },
+        { n: 'Neilus Brouder', q: 'Top class team of friendly professionals with an abundance of knowledge and expertise. Would highly recommend.' },
+        { n: 'Jimmy Sheehan', q: 'Very professional and efficient service. Experts in their field. Highly recommended.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
