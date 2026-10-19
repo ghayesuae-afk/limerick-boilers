@@ -1,3 +1,30 @@
+# Limerick Boilers website
+
+Vite + React build of the Claude Design handoff in `project/`.
+
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build in dist/
+```
+
+| Route | Page |
+|---|---|
+| `/` | Home |
+| `/about` | About Us |
+| `/services` | Services |
+| `/contact` | Contact |
+| `/book` | Booking flow (`?service=survey\|oil\|gas` preselects a service) |
+| `/devices` | **Dev only:** laptop + iPhone preview, both frames live |
+
+Still placeholder, needing a real back end:
+- **Payments:** `src/pages/Book.jsx` simulates payment (look for the Stripe TODO).
+- **Availability and Eircode coverage:** `src/booking/availability.js` (covered areas: V94, V35, V42).
+- **Contact form:** `src/pages/Contact.jsx` doesn't send anything yet (TODO in `send`).
+- **Confirmation email/text:** booking refs are generated in the browser.
+
+---
+
 # CODING AGENTS: READ THIS FIRST
 
 This is a **handoff bundle** from Claude Design (claude.ai/design).
