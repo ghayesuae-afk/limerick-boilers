@@ -71,13 +71,21 @@ export function CertStrip() {
       <div className="cert-strip__inner">
         <span className="eyebrow eyebrow--muted">Certified &amp; approved</span>
         <div className="cert-strip__logos">
-          {CERT_LOGOS.map((l) => <img key={l.alt} className="cert" src={l.src} alt={l.alt} />)}
+          {CERT_LOGOS.map((l) => <LogoImg key={l.alt} className="cert" {...l} />)}
           <span className="cert-strip__divider" />
-          {BRAND_LOGOS.map((l) => <img key={l.alt} className="brand" src={l.src} alt={l.alt} />)}
+          {BRAND_LOGOS.map((l) => <LogoImg key={l.alt} className="brand" {...l} />)}
         </div>
       </div>
     </section>
   );
+}
+
+// Partner/certification logo that falls back to a text badge if the image
+// can't load (e.g. the remote host is blocked or offline).
+export function LogoImg({ src, alt, short, className = '' }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <span className={`logo-fallback ${className}`} title={alt}>{short || alt}</span>;
+  return <img className={className} src={src} alt={alt} onError={() => setFailed(true)} />;
 }
 
 export function CallButton() {

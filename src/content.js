@@ -6,24 +6,25 @@ export const EMAIL = 'info@limerickboilers.ie';
 export const HOURS = 'Mon–Sat, 9am–5pm';
 
 const ASSETS = 'https://www.limerickboilers.ie/assets/img';
-export const LOGO = `${ASSETS}/plumbero-logo.png`;
-export const HERO_PHOTO = '/images/hero-van.jpg';
+const LOCAL = `${import.meta.env.BASE_URL}images`;
+export const LOGO = `${LOCAL}/logo.png`;
+export const HERO_PHOTO = `${LOCAL}/hero-van.jpg`;
 
 export const CERT_LOGOS = [
-  { src: `${ASSETS}/RGI.png`, alt: 'Registered Gas Installer' },
-  { src: `${ASSETS}/OFTEC.png`, alt: 'OFTEC' },
-  { src: `${ASSETS}/seai.png`, alt: 'SEAI' },
+  { src: `${ASSETS}/RGI.png`, alt: 'Registered Gas Installer', short: 'RGI' },
+  { src: `${ASSETS}/OFTEC.png`, alt: 'OFTEC', short: 'OFTEC' },
+  { src: `${ASSETS}/seai.png`, alt: 'SEAI', short: 'SEAI' },
 ];
 export const BRAND_LOGOS = [
-  { src: `${ASSETS}/Grant.png`, alt: 'Grant' },
-  { src: `${ASSETS}/ideal.png`, alt: 'Ideal' },
-  { src: `${ASSETS}/BoschWorchester.png`, alt: 'Worcester Bosch' },
+  { src: `${ASSETS}/Grant.png`, alt: 'Grant', short: 'Grant' },
+  { src: `${ASSETS}/ideal.png`, alt: 'Ideal', short: 'Ideal' },
+  { src: `${ASSETS}/BoschWorchester.png`, alt: 'Worcester Bosch', short: 'Worcester Bosch' },
 ];
 
 export const CREDENTIALS = [
-  { v: 'RGI registered', k: 'Registered Gas Installer for all gas work', img: `${ASSETS}/RGI.png` },
-  { v: 'OFTEC certified', k: 'Qualified for oil heating installs and servicing', img: `${ASSETS}/OFTEC.png` },
-  { v: 'SEAI registered', k: 'Eligible for heating upgrade grants', img: `${ASSETS}/seai.png` },
+  { v: 'RGI registered', k: 'Registered Gas Installer for all gas work', img: `${ASSETS}/RGI.png`, short: 'RGI' },
+  { v: 'OFTEC certified', k: 'Qualified for oil heating installs and servicing', img: `${ASSETS}/OFTEC.png`, short: 'OFTEC' },
+  { v: 'SEAI registered', k: 'Eligible for heating upgrade grants', img: `${ASSETS}/seai.png`, short: 'SEAI' },
   { v: 'Fully insured', k: 'Public liability cover on every job', img: LOGO },
 ];
 

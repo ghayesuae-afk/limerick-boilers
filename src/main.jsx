@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './styles.css';
 
@@ -11,10 +11,14 @@ if (new URLSearchParams(window.location.search).has('frame')) {
   document.documentElement.dataset.framed = '';
 }
 
+// The shareable preview build (`--mode artifact`) is served as static files
+// with no server-side routing, so it routes on the URL hash instead.
+const Router = import.meta.env.MODE === 'artifact' ? HashRouter : BrowserRouter;
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <App />
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>,
 );

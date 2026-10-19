@@ -169,6 +169,12 @@ button { font: inherit; }
 .cert-strip__logos { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
 .cert-strip__logos img.cert { height: 44px; }
 .cert-strip__logos img.brand { height: 34px; }
+.logo-fallback {
+  display: inline-flex; align-items: center; height: 36px; padding: 0 12px;
+  border: 1.5px solid var(--line); border-radius: 8px; background: #fff;
+  font-size: 14px; font-weight: 800; letter-spacing: 0.04em; color: var(--text-3); white-space: nowrap;
+}
+.cred-card .logo-fallback { align-self: flex-start; color: var(--blue); }
 .cert-strip__divider { width: 1px; height: 32px; background: var(--line); }
 
 /* ───────────── Final CTA ───────────── */
@@ -294,7 +300,7 @@ textarea.input { resize: vertical; }
   background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px 22px;
   display: flex; flex-direction: column; gap: 14px; min-height: 150px;
 }
-.cred-card img { height: 36px; width: auto; align-self: flex-start; object-fit: contain; }
+.cred-card__logo { height: 36px; width: auto; align-self: flex-start; object-fit: contain; }
 .cred-card__text { margin-top: auto; display: flex; flex-direction: column; gap: 3px; }
 .cred-card__text strong { font-size: 17px; font-weight: 800; }
 .cred-card__text span { font-size: 14px; color: var(--text-3); line-height: 1.4; }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Page, CertStrip, CallButton, FinalCta, RadioCards } from '../components/Layout.jsx';
+import { Page, CertStrip, CallButton, FinalCta, RadioCards, LogoImg } from '../components/Layout.jsx';
 import { HERO_PHOTO, PHONE, PHONE_HREF, CREDENTIALS, REVIEWS } from '../content.js';
 
 const PICKER = [
@@ -103,7 +103,7 @@ export default function Home() {
         <div className="cred-grid">
           {CREDENTIALS.map((c) => (
             <div key={c.v} className="cred-card">
-              <img src={c.img} alt={c.v} />
+              <LogoImg src={c.img} alt={c.v} short={c.short} className="cred-card__logo" />
               <div className="cred-card__text">
                 <strong>{c.v}</strong>
                 <span>{c.k}</span>
